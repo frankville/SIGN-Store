@@ -1,0 +1,19 @@
+unidades {
+	tipo (kg,cm3,etc)
+}
+
+categorias {
+	nombre (bebidas, snacks, bebidas c/ alcohol, etc )
+}
+
+producto {
+	codigo
+	nombre
+	descripcion
+	categoria: Array<categoria>
+	impuestos : array<impuesto>
+	foto
+	precio_unitario:
+	contenido: magnitud + unidad: unidad
+
+}
