@@ -4,36 +4,42 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <title>Usuarios</title>
+	<link rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.min.css">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
 	<link rel="stylesheet"  href="carga.css">
 </head>
 
 <body>
 
 <div class="row">
-	<div class="col-xs-2 col-sm-2 container">
+  <span class="col-xs-3 col-sm-3"></span>
+	<div class="col-xs-3 col-sm-3 container">
 	<form id="cargaUsuarios" class="form-horizontal" role="form">
 		<div class="form-group">
-    		<label for="usuario">Usuario</label>
+      <div class="divTitle"><h4>Usuario Nuevo</h4></div>
+         <label for="pass">Nombre</label>
    			 <input  class="form-control" id="usuario" placeholder="tu nombre de usuario">
   		</div>
 		<div class="form-group">
     		<label for="pass">contraseña</label>
    			 <input type="password" class="form-control" id="pass" placeholder="tu password">
-  		</div>
+  	</div>
 		<div class="form-group">
     		<label for="email">Email</label>
    			 <input  class="form-control" id="correoe" placeholder="tu email">
   		</div>
-  		<button id="botonCargaUs"type="submit" class="btn btn-default">Agregar</button>
+  		<button id="botonCargaUs"type="submit" class="btn btn-lg btn-primary btn-block">Agregar</button>
+     <div id="alcahuete" class="alert alert-info alert-dismissable collapse">
+       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+     </div>
+
   	</form>
 	</div>
-	<div class=" col-xs-3  col-sm-3 container">
-		<h4>Lista de usuarios</h4>
+	<div class=" col-xs-5  col-sm-5 container">
+      <div class="divTitle"><h4>Lista de Usuarios</h4></div>
 		<div class="table-responsive">
   			<table  id="listaUsuarios" class="table">
   				<thead>
@@ -50,31 +56,8 @@
   			</table>
 		</div>	
 	</div>	
-	<div class=" col-xs-2 col-sm-2 container">
-	<form id="cargaSesiones" class="form-horizontal" role="form">
-		<p>Inicia Sesión</p>
-		<div class="form-group">
-    		<label for="nomUs">Usuario</label>
-   			 <input class="form-control" id="nomUs" placeholder="usuario">
-  		</div>
-		<div class="form-group">
-    		<label for="passUs">Contraseña</label>
-   			 <input type="password" class="form-control" id="passUs" placeholder="password">
-  		</div>
-		<div class="form-group">
-    		<label for="listaSucs">Sucursal</label>
-    		<select id="listaSucs" class="form-control">
-   					<!-- items to be filled in js -->
-   					<option>1</option>
-   					<option>2</option>
-   					<option>3</option>
-   					<option>4</option>
-    		</select>
-  		</div>
-  		<button id="botonCargaSesion"type="submit" class="btn btn-default">Submit</button>
-  	</form>
-	</div>	
-	<div class=" col-xs-3  col-sm-3 container">
+<!--
+	<div class=" col-xs-4  col-sm-4 container">
 		<h4>Lista de sesiones</h4>
 		<div class="table-responsive">
   			<table id="listaSesiones" class="table">
@@ -92,15 +75,17 @@
   			</table>
 		</div>
 	</div>	
+
+  -->
 </div>
 
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
+	<script src="jquery-1.11.0.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script  src="controller.js"></script>
     <script  src="carga.js"></script>
       <script  src="iniciosesion.js"></script>
+
 
 
 </body>

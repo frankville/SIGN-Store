@@ -39,31 +39,31 @@ function  loggedIn(){
 		$("#marco").fadeOut("fast",function () {
 			$("#menu").fadeIn("fast");
 		});
-		$("#alcahuete").text("Exito! tu usuario y password son validos");
+
+		showSuccessMsg("Exito! tu usuario y password son validos");
+};
+
+function showSuccessMsg(msg){
+
+			$("#alcahuete").text(msg);
 		$("#alcahuete").removeClass("alert-info");
 		$("#alcahuete").removeClass("alert-danger");
 		$("#alcahuete").removeClass("collapse");
 		$("#alcahuete").addClass("alert-success");
-
-};
+}
 
 var mostrarError = function(data){
 	setTimeout(function(){
 		$("#loaderContainer").fadeOut("fast",function () {
 			$("#formulario").fadeIn("fast");
 		});
-	$("#alcahuete").text("Error en http request: "+data);
-		$("#alcahuete").removeClass("alert-info");
-		$("#alcahuete").removeClass("alert-success");
-		$("#alcahuete").removeClass("collapse");
-		$("#alcahuete").addClass("alert-danger");
-	}, 2000);
+
+	showErrMsg("Error! "+data);
+	},2000);
 };
 
-
 function showErrMsg(msg){
-	$("#formulario").fadeIn("fast");
-			$("#alcahuete").text(msg);
+		$("#alcahuete").text(msg);
 		$("#alcahuete").removeClass("alert-info");
 		$("#alcahuete").removeClass("alert-success");
 		$("#alcahuete").removeClass("collapse");

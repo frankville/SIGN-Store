@@ -44,7 +44,6 @@ function addSesion(usuario,transac) {
   	usuario.sesiones.push(sesion);
   	var objstore = transac.objectStore("usuarios");
  	 var req = objstore.put(usuario);
- 	  		alert("aca llega");
 
  	transac.oncomplete = function (event) {
  			loggedIn();

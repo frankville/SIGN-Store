@@ -1,6 +1,11 @@
 
 $(document).ready(function () {
-
+$("#usuario").keyup(function(){
+	$("#alcahuete").fadeOut("fast");
+});
+$("#pass").keyup(function(){
+	$("#alcahuete").fadeOut("fast");
+});
 
 $("#botonCargaUs").click(function(event){
 	//	guardarUsuarios();
@@ -8,8 +13,6 @@ $("#botonCargaUs").click(function(event){
 	var nvo = new Usuario($("#usuario").val(),$("#pass").val(),$("#correoe").val(), new Array());
 	addNewUser(nvo);
 });
-
-
 
 });
 
@@ -28,31 +31,26 @@ var addNewUser = function(usuario) {
   	
   // Use transaction oncomplete to make sure the objectStore creation is 
   // finished before adding data into it.
-  	var transac = baseDatos.transaction(["usuarios"],"readwrite");
-  	var usuariosDB = transac.objectStore("usuarios");
+  if(usuario.nombre != "") {
+  	  	var transac = baseDatos.transaction(["usuarios"],"readwrite");
+  		var usuariosDB = transac.objectStore("usuarios");
 
- 	 var request = usuariosDB.add(usuario);
- 	transac.oncomplete = function (event) {
- 		getUsuarios();
- 	};   		
- 	transac.onerror = function(event){
- 		alert("error en addNewUser");
- 	}
+ 	 	var request = usuariosDB.add(usuario);
+ 		transac.oncomplete = function (event) {
+ 			getUsuarios();
+ 			showSuccessMsg("Exito! usuario agregado");
+ 			clearUserForm();
+ 		};   		
+ 		transac.onerror = function(event){
+ 			showErrMsg("Error de IndexedDB al agregar un nuevo usuario");
+ 		}
+
+ 	}else {
+ 		showErrMsg("Tenés que proporcionar un usuario y una contraseña");
+	 }
+
 
  };
-
-	/*
-	db.transaction (function(t){
-		t.executeSql(
-			("INSERT INTO usuarios VALUES (?,?);"),
-			 [us, pass],
-			 function(t, result){
-			 	callback(result.insertId);
-			 }
-		);
-	});
-*/
-
 
 var getUsuarios = function (){
 	var array = new Array();
@@ -74,58 +72,72 @@ usuarios.openCursor().onsuccess = function(event) {
 usuarios.openCursor().onerror = function (event){
 	alert("error en getusuarios!!");
 }
-/*
-	db.transaction(function(t){
-		 		
 
-		t.executeSql("SELECT * FROM usuarios ORDER BY id;",
-			[],
-			function(t,result){
-				alert("manda la info a callback "+result.toString());
-				callback(result);
-			}
-		);
-	});
-*/
-}
+};
 
-
-var guardarUsuarios = function(){
-							alert("entra al evento");
-
-
-/*
-		addNewUser( $("#usuario").val(),
-					$("#pass").val(),
-					function(idagregado){
-						alert("id agregado! "+idagregado);
-						getUsuarios(recargarUsuarios);
-					}
-					
-		);
-*/
-
-
+function deleteUser(user){
+var request = baseDatos.transaction(["usuarios"], "readwrite")
+                .objectStore("usuarios")
+                .delete(user);
+request.onsuccess = function(event) {
+};
 };
 
 
 var recargarUsuarios = function(usuarios ){
-	// Clear out the list of girls.
 	$("#listaUsuarios tbody tr").remove();
+
 	// Check to see if we have any results.
 	if (!usuarios){
 	return;
 	}
- 
-	// Loop over the current list of girls and add them
-	// to the visual list.
+
 	for(var i=0;i < usuarios.length; i++){
-		var fila = "<tr>"+"<td class='nombre'>"+usuarios[i].nombre+"</td>"+"<td class='pass'>"+usuarios[i].pass+"</td>"+"<td class='email'>"+usuarios[i].email+"</td>"+"</tr>";
+		var fila = "<tr>"+
+		"<td class='nombre'>"+usuarios[i].nombre+
+		"</td>"+"<td class='pass'>"+usuarios[i].pass+
+		"</td>"+"<td class='email'>"+usuarios[i].email+"</td>"+
+		"<td>"+"<button class='form-control'>x</button></td>"+
+		"</tr>";
 		$("#listaUsuarios").append(fila);
-		JSON.stringify(usuarios);
 
 	};
+
 	$('#listaUsuarios tbody tr').click(function(event){
-			getSesiones($(this).find(".nombre").text());
+			//getSesiones($(this).find(".nombre").text());
  });
+
+	$('#listaUsuarios tbody tr :button').click(function(e){
+ 				deleteUser($(this).closest('tr').find(".nombre").text());
+   				$(this).closest('tr').remove();
+   				$('#listaSesiones tbody tr').remove();
+	});
 	};
+
+	function clearUserForm(){
+			$("#usuario").val("");
+			$("#pass").val("");
+			$("#correoe").val("");
+			$("#alcahuete").fadeOut("fast");
+
+	};
+
+	function showErrMsg(msg){
+
+		$("#alcahuete").text(msg);
+		$("#alcahuete").removeClass("alert-info");
+		$("#alcahuete").removeClass("alert-success");
+		$("#alcahuete").addClass("alert-danger");
+		$("#alcahuete").fadeIn("fast");
+}
+
+function showSuccessMsg(msg){
+
+			$("#alcahuete").text(msg);
+		$("#alcahuete").removeClass("alert-info");
+		$("#alcahuete").removeClass("alert-danger");
+		$("#alcahuete").removeClass("collapse");
+		$("#alcahuete").addClass("alert-success");
+		$("#alcahuete").fadeIn("fast");
+
+}
