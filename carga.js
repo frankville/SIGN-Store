@@ -1,12 +1,11 @@
 
 $(document).ready(function () {
-	getUsuarios();
+
 
 $("#botonCargaUs").click(function(event){
 	//	guardarUsuarios();
 	event.preventDefault();
 	var nvo = new Usuario($("#usuario").val(),$("#pass").val(),$("#correoe").val(), new Array());
-	alert("Mis datos JSONificados "+JSON.stringify(nvo));
 	addNewUser(nvo);
 });
 
@@ -56,7 +55,6 @@ var addNewUser = function(usuario) {
 
 
 var getUsuarios = function (){
-	alert("entra a getUsuarios");
 	var array = new Array();
 
 	var usuarios = baseDatos.transaction("usuarios").objectStore("usuarios");
@@ -113,7 +111,6 @@ var guardarUsuarios = function(){
 
 var recargarUsuarios = function(usuarios ){
 	// Clear out the list of girls.
-	alert("Entra a recargarUsuarios");
 	$("#listaUsuarios tbody tr").remove();
 	// Check to see if we have any results.
 	if (!usuarios){

@@ -13,20 +13,27 @@ function Sesion(f,h,s){
 };
 
 function verifyCredentials(user,pwd, callback){
-	var transac  = baseDatos.transaction(["usuarios"],"readonly");
+	var transac  = baseDatos.transaction(["usuarios"],"readwrite");
 	var usuarios = transac.objectStore("usuarios");
 	var request = usuarios.get(user);
 	request.onsuccess = function(event){
-		if(request.result.pass == pwd){
-			callback(request.result, transac);
+		if(request.result != undefined){
+			if((request.result.pass == pwd)){
+				callback(request.result, transac);
+			}else{
+				showErrMsg("No pasaste la verificacion");
+			}
 		}else{
-			alert("No pasaste la verificacion");
+			showErrMsg("No pasaste la verificacion");
 		}
+
 	};
 	request.onerror = function (event){
-		alert("error en verifyCredentials");
+		showErrMsg("error de INDEXEDDB en verifyCredentials");
 	};
 };
+
+
 function addSesion(usuario,transac) {
 	  // Use transaction oncomplete to make sure the objectStore creation is 
   // finished before adding data into it.
@@ -34,18 +41,19 @@ function addSesion(usuario,transac) {
   var date  = new Date();
 
   	var sesion = new Sesion(date.toDateString(),date.toTimeString(),$("#listaSucs").val());
-  	alert("usuario "+JSON.stringify(usuario)+" sesion "+JSON.stringify(sesion));
   	usuario.sesiones.push(sesion);
   	var objstore = transac.objectStore("usuarios");
- 	 var request = objstore.put(usuario);
- 	request.oncomplete = function (event) {
- 		getSesionesrequest.result.key(request.result.key);
+ 	 var req = objstore.put(usuario);
+ 	  		alert("aca llega");
+
+ 	transac.oncomplete = function (event) {
+ 			loggedIn();
  	};   		
- 	request.onerror = function(event){
- 		alert("error en put request");
+ 	transac.onerror = function(event){
+ 		alert("Error en put request");
  	}
 
-}
+};
 
 
 function getSesiones(nombreUsuario) {

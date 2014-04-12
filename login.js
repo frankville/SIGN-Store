@@ -16,10 +16,11 @@ $("#pass").keyup(function(){
 $("#formulario").submit(function(event){
 	event.preventDefault();
 	$("#formulario").fadeOut("fast",function () {
-			$("#loaderContainer").fadeIn("fast");
+
+		verifyCredentials($("#usuario").val(),$("#pass").val(), addSesion);
+
 	});
 
-	verifyCredentials($("#usuario").val(),$("#pass").val(), darRespuesta);
 	/* 
 $("#usuario").show("fast",function(){});
 		$("#pass").show("fast",function(){});
@@ -33,9 +34,8 @@ var datosLogin = function  (nomus, passus) {
 	this.j_password = passus;
 };
 
-var darRespuesta = function(result,transac){
-			if(result != 0 ){
-
+function  loggedIn(){
+	alert("entra aca");
 		$("#marco").fadeOut("fast",function () {
 			$("#menu").fadeIn("fast");
 		});
@@ -44,19 +44,6 @@ var darRespuesta = function(result,transac){
 		$("#alcahuete").removeClass("alert-danger");
 		$("#alcahuete").removeClass("collapse");
 		$("#alcahuete").addClass("alert-success");
-
-	}else{
-		$("#loaderContainer").fadeOut("fast",function () {
-			$("#formulario").fadeIn("fast");
-		});
-		<!--
-		$("#alcahuete").text("Error! tu usuario y password NO son validos");
-		$("#alcahuete").removeClass("alert-info");
-		$("#alcahuete").removeClass("alert-success");
-		$("#alcahuete").removeClass("collapse");
-		$("#alcahuete").addClass("alert-danger");
-		-->
-	};
 
 };
 
@@ -74,3 +61,11 @@ var mostrarError = function(data){
 };
 
 
+function showErrMsg(msg){
+	$("#formulario").fadeIn("fast");
+			$("#alcahuete").text(msg);
+		$("#alcahuete").removeClass("alert-info");
+		$("#alcahuete").removeClass("alert-success");
+		$("#alcahuete").removeClass("collapse");
+		$("#alcahuete").addClass("alert-danger");
+}

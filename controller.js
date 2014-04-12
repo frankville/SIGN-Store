@@ -14,17 +14,16 @@ $( document ).ready( function(){
 var initDatabase = function () {
 var request = window.indexedDB.open('SIGN-Store', 1);
 request.onerror = function(event) {
-	alert("El navegador no soporta IndexedDB :/ "+JSON.stringify(event));
+	showErrMsg("El navegador no soporta IndexedDB :/ "+JSON.stringify(event));
 };
 request.onsuccess = function(event) {
 
-	alert("entra a crear bd!");
 	baseDatos = request.result;
 	getUsuarios();
 
 baseDatos.onerror = function ( event ){
 	//generic error handler for all errors asociated with this db 
-	alert("Database error! "+event.target.errorCode);
+	showErrMsg("Database error! "+event.target.errorCode);
 
 
 
