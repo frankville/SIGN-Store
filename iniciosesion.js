@@ -17,8 +17,10 @@ function verifyCredentials(user,pwd, callback){
 	var usuarios = transac.objectStore("usuarios");
 	var request = usuarios.get(user);
 	request.onsuccess = function(event){
+
 		if(request.result != undefined){
 			if((request.result.pass == pwd)){
+
 				callback(request.result, transac);
 			}else{
 				showErrMsg("No pasaste la verificacion");
@@ -28,6 +30,7 @@ function verifyCredentials(user,pwd, callback){
 		}
 
 	};
+
 	request.onerror = function (event){
 		showErrMsg("error de INDEXEDDB en verifyCredentials");
 	};
@@ -45,10 +48,10 @@ function addSesion(usuario,transac) {
   	var objstore = transac.objectStore("usuarios");
  	 var req = objstore.put(usuario);
 
- 	transac.oncomplete = function (event) {
+ 	req.onsuccess = function (event) {
  			loggedIn();
  	};   		
- 	transac.onerror = function(event){
+ 	req.onerror = function(event){
  		alert("Error en put request");
  	}
 

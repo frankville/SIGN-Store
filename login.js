@@ -15,17 +15,8 @@ $("#pass").keyup(function(){
 });
 $("#formulario").submit(function(event){
 	event.preventDefault();
-	$("#formulario").fadeOut("fast",function () {
-
 		verifyCredentials($("#usuario").val(),$("#pass").val(), addSesion);
 
-	});
-
-	/* 
-$("#usuario").show("fast",function(){});
-		$("#pass").show("fast",function(){});
-		$("#spin").fadeOut("fast");
-	*/
 
 });
 
@@ -35,7 +26,8 @@ var datosLogin = function  (nomus, passus) {
 };
 
 function  loggedIn(){
-	alert("entra aca");
+		alert("entra aca");
+
 		$("#marco").fadeOut("fast",function () {
 			$("#menu").fadeIn("fast");
 		});
@@ -56,9 +48,10 @@ var mostrarError = function(data){
 	setTimeout(function(){
 		$("#loaderContainer").fadeOut("fast",function () {
 			$("#formulario").fadeIn("fast");
+				showErrMsg("Error! "+data);
 		});
 
-	showErrMsg("Error! "+data);
+
 	},2000);
 };
 
