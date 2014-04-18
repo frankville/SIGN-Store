@@ -17,6 +17,7 @@
     <link href="signin.css" rel="stylesheet">
     <link href="stickyfooter.css" rel="stylesheet">
     <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" type="text/css" href="offcanvas.css">
     <link href="dashboard.css" rel="stylesheet">
 
 
@@ -32,6 +33,28 @@
 
   <body>
 
+     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Menu</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SIGN-Store</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul id="navbarUsuario" class="nav navbar-nav navbar-right collapse">
+                
+                <li>
+                  <a id="nomUsuario"><img id="imgUsuario" class="img-responsive" src="PoS.png">usuario</a>
+             </li>
+                <li><a href="#">Salir</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
     <div id="marco" class="container">
 
       <div id="encab" class="container">
@@ -57,7 +80,107 @@
 
     </div> <!-- /container --> 
     <div  id="menu" class="container collapse">
-    <p> ACa va el menu principal de carga de datossssss</p>
+        <!-- Fixed navbar -->
+
+
+      <div class="row row-offcanvas row-offcanvas-left">
+
+        <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+
+            <ul id="menuPpal" class="nav nav-pills nav-stacked">
+              <li class="active"><a >Home</a></li>
+              <li><a id="linkUsuario" href="">Usuarios</a></li> 
+              <li><a href="" >Listado Diario</a></li>
+              <li><a href="">Listado Deuda</a></li> 
+              <li>
+                <a data-toggle="collapse" data-parent="#menuPpal" href="#ingresoSubmenu">
+                  Ingresos <span class="caret"></span>
+                </a>
+                <div id="ingresoSubmenu" class="panel-collapse collapse in">
+                  <div class="panel-body">
+                      <ul  class="nav nav-pills nav-stacked" >
+                      <li id="ingresosDetalle"><a href="#"> Detalle</a></li>
+                      <li id="ingresosResumen" ><a href="#">Resumen</a></li>
+                      </ul>
+                  </div>
+                </div>
+              </li>
+              <li >
+                <a data-toggle="collapse" data-parent="#menuPpal" href="#egresoSubmenu">
+                Egresos <span class="caret"></span>
+                </a>
+                <div id="egresoSubmenu" class="panel-collapse collapse in">
+                  <div class="panel-body">
+                      <ul  class="nav nav-pills nav-stacked" >
+                      <li  id="egresosDetalle" ><a >Detalle</a></li>
+                      <li id="egresosResumen" ><a >Resumen</a></li>
+                      </ul>
+                  </div>
+                </div>
+            </li>      
+          </ul>  
+
+        </div><!--/span-->
+       
+        <div  class="col-xs-10 col-sm-10">
+
+          <p class="pull-left visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Menu</button>
+          </p>
+
+          <div id="contenedor" class="container col-xs-12 col-sm-12 ">
+
+              <div id="homePan" class="jumbotron">
+                <h1>SIGN-Store</h1>
+                <h4>Administrador</h4>
+                 <p></p>
+              </div>
+
+           <div id="panelUsuario" class="col-xs-12 col-sm-12 container">
+               <form id="cargaUsuarios" class="form-horizontal col-xs-3 col-sm-3 " role="form">
+                  <div class="form-group">
+                      <div class="divTitle"><h4>Usuario Nuevo</h4></div>
+                      <label for="pass">Nombre</label>
+                      <input  class="form-control" id="usuario" placeholder="tu nombre de usuario">
+                  </div>
+                  <div class="form-group">
+                      <label for="pass">contraseña</label>
+                      <input type="password" class="form-control" id="pass" placeholder="tu password">
+                  </div>
+                  <div class="form-group">
+                        <label for="email">Email</label>
+                        <input  class="form-control" id="correoe" placeholder="tu email">
+                  </div>
+                  <button id="botonCargaUs"type="submit" class="btn btn-lg btn-primary btn-block">Agregar</button>
+                  <div id="alcahuete" class="alert alert-info alert-dismissable collapse">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  </div>
+              </form>
+
+              <div id="tablaUsuarios" class="col-xs-9 col-sm-9">
+                  <div class="divTitle"><h4>Lista de Usuarios</h4></div>
+                  <div class="table-responsive">
+                      <table  id="listaUsuarios" class="table">
+                          <thead>
+                            <tr>
+                                <th style="width:30em">Nombre usuario</th>
+                                <th style="width:30em">Password</th> 
+                                <th style="width:30em">email</th>
+                                <th style="width:10em">Borrar</th>
+                            </tr>           
+                          </thead>
+
+                          <tbody>
+          
+                          </tbody>
+                      </table>
+                  </div>  
+              </div> 
+            </div>
+          </div><!--/span-->
+        </div>
+
+      </div><!--/row-->
 
     </div>
     
@@ -73,11 +196,12 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="jquery-1.11.0.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>  
-           <script src="spin.js"></script>
+    <script src="offcanvas.js"></script>
     <script src="iniciosesion.js"></script>
     <script src="login.js"></script>
     <script src="carga.js"></script>
     <script src="controller.js"></script>
+    <script src="dashboard.js"></script>
 
 
   </body>

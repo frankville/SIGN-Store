@@ -1,21 +1,13 @@
 
 $(document).ready(function () {
-$("#usuario").keyup(function(){
-	$("#alcahuete").fadeOut("fast");
-});
-$("#pass").keyup(function(){
-	$("#alcahuete").fadeOut("fast");
-});
 
 $("#botonCargaUs").click(function(event){
-	//	guardarUsuarios();
 	event.preventDefault();
 	var nvo = new Usuario($("#usuario").val(),$("#pass").val(),$("#correoe").val(), new Array());
 	addNewUser(nvo);
 });
 
 });
-
 
 
 var Usuario = function(usuario,password,correoElec,sesiones ){

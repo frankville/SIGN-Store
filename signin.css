@@ -1,9 +1,13 @@
  @font-face { font-family: Aldrich; src: url(Aldrich-Regular.ttf); }
 
 body {
-  margin-top: -4em;
   background-color: #FFFFFB;
+  padding-top: 70px;
 
+}
+
+#alcahuete {
+  display: none;
 }
 
 #encab {
@@ -21,13 +25,13 @@ body {
 
 }
 
+
 #loaderContainer {
-  display: block;
+  display: none;
   position: relative;
   text-align: center;
   width: 100%;
 }
-
 
 #nombre {
   margin-bottom: 0.5em;

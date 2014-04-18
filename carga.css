@@ -1,6 +1,3 @@
-body {
-	background-color: #FFFFEB;
-}
 
 input {
 	margin-bottom: 0.5em;
@@ -12,11 +9,6 @@ input {
 label {
 	font-size: 1.5em;
 }
-
-table {
-	max-width: 100%;
-}
-
 
 table tbody tr:hover {
     background-color: #FFCC99;
@@ -30,7 +22,6 @@ table thead {
 
 #listaUsuarios { 
 	 overflow-y:auto; 
-	 display:block;  
 }
 
 .container {
@@ -41,10 +32,8 @@ table thead {
 	border-radius: 0.5em;
 	box-shadow: 0.5em 0.5em 0.5em rgba(192,192,192,0.5);
 	margin: 1em 1em;
-	padding-bottom: 2em;
-	padding-left: 2.5em;
-	padding-right: 2.5em;
-	padding-top: 2em;
+	padding: 2em;
+
 }
 
 .divTitle {
@@ -59,3 +48,4 @@ table thead {
 	text-shadow: 0.2em 0.2em 0.2em rgba(10,10,10,0.3);
 
 }
+

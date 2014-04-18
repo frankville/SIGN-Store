@@ -1,9 +1,3 @@
-$(document).ready(function(){
-	$("#cargaSesiones").submit(function(event){
-		event.preventDefault();
-		verifyCredentials($("#nomUs").val(),$("#passUs").val(),addSesion);
-	});
-});
 
 
 function Sesion(f,h,s){
@@ -23,10 +17,12 @@ function verifyCredentials(user,pwd, callback){
 
 				callback(request.result, transac);
 			}else{
-				showErrMsg("No pasaste la verificacion");
+				showErrMsg("contraseña incorrecta");
+				console.log("entra aca");
 			}
 		}else{
-			showErrMsg("No pasaste la verificacion");
+			showErrMsg("el usuario no existe");
+
 		}
 
 	};

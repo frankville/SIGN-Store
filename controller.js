@@ -54,32 +54,10 @@ request.onupgradeneeded = function (event){
   usuarios.createIndex("sesiones", "sesiones", { unique: false });
 
 
-  // Create an index to search customers by email. We want to ensure that
-  // no two customers have the same email, so use a unique index.
-
-
 
 };
 
 
-
-
-	/*
-	db.transaction( function( tr ) 
-		{
- 		alert("entra a la creacion de bd");
-
-		// Create our girls table if it doesn't exist.
-		tr.executeSql(
-		"CREATE TABLE IF NOT EXISTS usuarios (" +
-		"id VARCHAR(50) NOT NULL PRIMARY KEY," +
-		"pass VARCHAR(50) NOT NULL" +
-		");"
-		);
- 
-		}
-	);
-*/
 };
 
 
