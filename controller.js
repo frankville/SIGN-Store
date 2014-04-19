@@ -1,13 +1,9 @@
 
-
-//var db = openDatabase("test", "1.0", "BD Prueba", 1024);  // Open SQLite Database
-
-var baseDatos ;
+var database ;
 
 $( document ).ready( function(){
 	initDatabase();
 
-	//getUsuarios(recargarUsuarios);
 });
 
 
@@ -18,46 +14,42 @@ request.onerror = function(event) {
 };
 request.onsuccess = function(event) {
 
-	baseDatos = request.result;
-	getUsuarios();
+	database = request.result;
+	getUsers();
 
 baseDatos.onerror = function ( event ){
-	//generic error handler for all errors asociated with this db 
 	showErrMsg("Database error! "+event.target.errorCode);
 
-
-
 };
 
 
 };
-
 
 
 request.onupgradeneeded = function (event){
-	//este evento se dispara si estamos queriendo inicializar una version superior 
-	//a la que se uso cuando se creo la bd
-	//aca se tienen que crear los objetos ("tablas")
+
 	  var db = event.target.result;
-  // Create an objectStore to hold information about our customers. We're
-  // going to use "ssn" as our key path because it's guaranteed to be
-  // unique.
-  var usuarios = db.createObjectStore("usuarios", { keyPath: "nombre" });
-  // Create an index to search customers by name. We may have duplicates
-  // so we can't use a unique index.
-  usuarios.createIndex("pass", "pass", { unique: false });
 
-  // Create an index to search customers by email. We want to ensure that
-  // no two customers have the same email, so use a unique index.
+  var usuarios = db.createObjectStore("SalesUsers", { keyPath: "username" });
+    usuarios.createIndex("fullname", "fullname", { unique: false });
+  usuarios.createIndex("password", "password", { unique: false });
+  usuarios.createIndex("photo", "photo", { unique: false });
   usuarios.createIndex("email", "email", { unique: false });
+    usuarios.createIndex("addresses", "addresses", { unique: false });
+  usuarios.createIndex("phones", "phones", { unique: false });
+  usuarios.createIndex("SalesSessions", "SalesSessions", { unique: false });
 
-  usuarios.createIndex("sesiones", "sesiones", { unique: false });
-
+  var usuarios = db.createObjectStore("AdminUsers", { keyPath: "username" });
+    usuarios.createIndex("fullname", "fullname", { unique: false });
+  usuarios.createIndex("password", "password", { unique: false });
+  usuarios.createIndex("photo", "photo", { unique: false });
+  usuarios.createIndex("email", "email", { unique: false });
+    usuarios.createIndex("addresses", "addresses", { unique: false });
+  usuarios.createIndex("phones", "phones", { unique: false });
+  usuarios.createIndex("AdminSessions", "AdminSessions", { unique: false });
 
 
 };
 
 
 };
-
-

@@ -1,15 +1,9 @@
 
 
-function Sesion(f,h,s){
-	this.fecha = f;
-	this.hora = h;
-	this.sucursal = s;	
-};
-
 function verifyCredentials(user,pwd, callback){
-	var transac  = baseDatos.transaction(["usuarios"],"readwrite");
-	var usuarios = transac.objectStore("usuarios");
-	var request = usuarios.get(user);
+	var transac  = database.transaction(["users"],"readwrite");
+	var users = transac.objectStore("users");
+	var request = users.get(user);
 	request.onsuccess = function(event){
 
 		if(request.result != undefined){
@@ -18,7 +12,6 @@ function verifyCredentials(user,pwd, callback){
 				callback(request.result, transac);
 			}else{
 				showErrMsg("contraseña incorrecta");
-				console.log("entra aca");
 			}
 		}else{
 			showErrMsg("el usuario no existe");
@@ -32,10 +25,7 @@ function verifyCredentials(user,pwd, callback){
 	};
 };
 
-
 function addSesion(usuario,transac) {
-	  // Use transaction oncomplete to make sure the objectStore creation is 
-  // finished before adding data into it.
 
   var date  = new Date();
 
@@ -74,9 +64,7 @@ function recargarSesiones(sesiones) {
 	if (!sesiones){
 	return;
 	}
- 
-	// Loop over the current list of girls and add them
-	// to the visual list.
+
 	for(var i=0;i < sesiones.length; i++){
 		var fila = "<tr>"+"<td>"+sesiones[i].fecha+"</td>"+"<td>"+sesiones[i].hora+"</td>"
 		+"<td>"+sesiones[i].sucursal+"</td>"+"</tr>";

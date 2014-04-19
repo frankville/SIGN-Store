@@ -42,6 +42,11 @@ body {
     border-color: #CC0000;
 }
 
+#ventas{
+  padding: 100px;
+  display: none;
+}
+
 #logo {
   margin-bottom: 1.5em;
   max-height: 150px;

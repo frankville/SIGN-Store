@@ -1,4 +1,3 @@
-// var db = openDatabase("test", "1.0", "BD Prueba", 1024);  // Open SQLite Database
 var sesion = null;
 
 
@@ -17,7 +16,8 @@ $("#pass").keyup(function(event){
 
 $("#formulario").submit(function(event){
 	event.preventDefault();
-		verifyCredentials($("#usuario").val(),$("#pass").val(), addSesion);
+
+	//verifyCredentials($("#usuario").val(),$("#pass").val(), addSesion);
 
 });
 
@@ -33,9 +33,28 @@ var datosLogin = function  (nomus, passus) {
 function  loggedIn(){
 
 		$("#marco").fadeOut("fast",function () {
-			$("#menu").fadeIn("fast");
+			$("#ventas").fadeIn("fast");
 		});
 
 		showSuccessMsg("Exito! tu usuario y password son validos");
 };
 
+function showErrMsg(msg){
+
+		$("#alcahuete").text(msg);
+		$("#alcahuete").removeClass("alert-info");
+		$("#alcahuete").removeClass("alert-success");
+		$("#alcahuete").addClass("alert-danger");
+		$("#alcahuete").fadeIn("fast");
+}
+
+function showSuccessMsg(msg){
+
+			$("#alcahuete").text(msg);
+		$("#alcahuete").removeClass("alert-info");
+		$("#alcahuete").removeClass("alert-danger");
+		$("#alcahuete").removeClass("collapse");
+		$("#alcahuete").addClass("alert-success");
+		$("#alcahuete").fadeIn("fast");
+
+}
