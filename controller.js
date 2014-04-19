@@ -44,7 +44,7 @@ request.onupgradeneeded = function (event){
   usuarios.createIndex("password", "password", { unique: false });
   usuarios.createIndex("photo", "photo", { unique: false });
   usuarios.createIndex("email", "email", { unique: false });
-    usuarios.createIndex("addresses", "addresses", { unique: false });
+  usuarios.createIndex("addresses", "addresses", { unique: false });
   usuarios.createIndex("phones", "phones", { unique: false });
   usuarios.createIndex("AdminSessions", "AdminSessions", { unique: false });
 

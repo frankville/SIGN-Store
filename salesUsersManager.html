@@ -9,16 +9,18 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-	<link rel="stylesheet"  href="carga.css">
+	<link rel="stylesheet"  href="salesUsersManager.css">
 </head>
 
 <body>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-4 col-sm-4 container">
+    <div class="col-xs-3 col-sm-3 container">
+      <div class="divTitle"><h4>Usuario Nuevo</h4></div>
       <form id="cargaUsuarios" class="form-horizontal" role="form">
-        <div class="divTitle"><h4>Usuario Nuevo</h4></div>
-        <img id="userPhoto" src="user-default.png" class="img-responsive">
+        <div class="marco">
+          <img id="userPhoto" src="user_default.png" class="img-responsive">
+        </div>
         <div class="form-group">
             <label for="fullname">Nombre Completo</label>
             <input class="form-control" id="fullname" placeholder="Nombre y Apellido completo">
@@ -37,11 +39,15 @@
         </div>
         <div class="form-group">
             <label for="phones">Teléfonos</label>
-            <select id="phones" class="form-control"></select>
+            <div class="marcoFormGroup">
+                <select id="phones" class="form-control"></select> <!-- aca falta agregar un boton de + para expandir el panel que agrega un telefono nuevo -->
+            </div>
         </div>
         <div class="form-group">
             <label for="addresses">Direcciones</label>
-            <select id="addresses" class="form-control"></select>
+            <div class="marcoFormGroup">
+                <select id="addresses" class="form-control"></select> <!-- aca falta agregar un boton de + para expandir el panel que agrega una dir nueva -->
+            </div>
         </div>
         <button id="saveUserButton"type="submit" class="btn btn-lg btn-primary btn-block">Agregar</button>
         <div id="msgPan" class="alert alert-info alert-dismissable collapse">
@@ -77,8 +83,9 @@
 	
 <script src="jquery-1.11.0.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script  src="controller.js"></script>
-<script  src="carga.js"></script>
+<script src="objects.js"></script>
+<!-- <script src="controller.js"></script> -->
+<!-- <script src="salesUsersManager.js"></script> -->
 
 </body>
 </html>

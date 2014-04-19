@@ -36,7 +36,7 @@ function Phone(){
 	this.phoneNumber = 0;
 	this.phoneType="";
 	this.toString = function(){
-		return phoneNumber+" ("+phoneType")";
+		return this.phoneNumber+" ("+phoneType+")";
 	}
 }
 
@@ -52,7 +52,7 @@ function SalesSession(){
 }
 
 SalesSession.prototype = new Session();
-salesSessions.prototype.constructor = SalesSession;
+SalesSession.prototype.constructor = SalesSession;
 
 
 function PointOfSale(){
