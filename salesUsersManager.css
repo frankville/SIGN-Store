@@ -24,8 +24,7 @@ table thead {
 	border-color: rgba(192,192,192,0.5);
 	border-radius: 0.5em;
 	box-shadow: 0.2em 0.2em 0.2em rgba(192,192,192,0.5);
-	margin: 0 auto;
-	text-align: center;
+	display: inline;
 	padding: 0.2em;
 }
 
@@ -36,8 +35,8 @@ table thead {
 	border-color: rgba(192,192,192,0.5);
 	border-radius: 0.5em;
 	box-shadow: 0.3em 0.3em 0.3em rgba(192,192,192,0.5);
-	margin: 1em 1em;
-	padding: 2em;
+	margin: 0.2em 0.2em;
+	padding: 1.3em;
 
 }
 
@@ -53,8 +52,7 @@ table thead {
 
 .marco {
 	background-color: #FFFFEB;
-	margin-top: 2em;
-	margin-bottom: 2em; 
+	margin-bottom: 1em; 
 }
 
 .marcoFormGroup {
